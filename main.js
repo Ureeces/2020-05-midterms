@@ -32,12 +32,10 @@ const isValidPassword = function(password) {
     return false;
   }
 
-  for(let i = 0; i < password.length; i++) {
-    if(password[i] === " ") {
-      return false;
-    }
-
+  if(password.includes(" ")) {
+    return false;
   }
+
   return true;
 }
 
@@ -112,6 +110,28 @@ const lastIndexOfSpace = function(str) {
   }
 
   return spaceIndex;
+}
+
+// hyphenateName -> replaces the space between the last and next-to-last names with a hyphen
+const hyphenateName = function(name) {
+  let hyphenatedBackwards = [];
+  let hyphenated = "";
+  let spaceCount = 0;
+
+  for(let i = name.length; i > -1; i--) {
+    let curr = name[i];
+    if(curr === " " && spaceCount !== 1) {
+      hyphenatedBackwards.push("-");
+      spaceCount++;
+    }
+
+    else {
+      hyphenatedBackwards.push(curr);
+    }
+  }
+
+  hyphenated = hyphenatedBackwards.reverse().join("");
+  return hyphenated;
 }
 
 if (typeof capitalizeSentences === 'undefined') {
