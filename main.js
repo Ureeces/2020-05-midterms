@@ -70,6 +70,49 @@ const countAs = function(grades) {
   return aCount;
 }
 
+// deleteMiddleLetters -> deletes the middle letter(s) from a string, returning the remaining string
+const deleteMiddleLetters = function(str) {
+  let deleted = "";
+  const len = str.length;
+  
+  const isEvenLength = str.length % 2 === 0 ? true : false;
+  const isOddLength = isEvenLength ? false : true;
+
+
+  let middleIndex = Math.floor(len / 2);
+
+  if(isEvenLength) {
+    for(let i = 0; i < len; i++) {
+      if(i !== middleIndex - 1 && i !== middleIndex) {
+        deleted += str[i];
+      }
+    }
+  }
+
+  if(isOddLength) {
+    for(let i = 0; i < len; i++) {
+      if(i !== middleIndex) {
+        deleted += str[i];
+      }
+    }
+  }
+
+  return deleted;
+}
+
+// lastIndexOfSpace -> returns the last appearance of a space character within the given string, and -1 if none is found
+const lastIndexOfSpace = function(str) {
+  let spaceIndex = -1;
+  
+  for(let i = 0; i < str.length; i++) {
+    let curr = str[i];
+    if(curr === " ") {
+      spaceIndex = i;
+    }
+  }
+
+  return spaceIndex;
+}
 
 if (typeof capitalizeSentences === 'undefined') {
   capitalizeSentences = undefined;
